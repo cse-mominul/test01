@@ -13,7 +13,6 @@ const Sells = () => {
   const onSubmit = (data) => {
     console.log(data.customer);
     setItems([...items, data]);
-
     resetField("date");
     resetField("item");
     resetField("size");
@@ -24,6 +23,8 @@ const Sells = () => {
     resetField("rate");
     resetField("price");
     resetField("customer");
+    resetField("width");
+
   };
 
   const [val, setVal] = useState();
@@ -42,14 +43,14 @@ const Sells = () => {
             <p className="font-bold">Date: </p>
             <input
               type="date"
-              className="border rounded-none ml-9 border-gray-500 input input-bordered input-sm w-32 max-w-x"
+              className="border rounded-none ml-9 border-gray-500 input input-bordered input-sm w-28 max-w-x"
               {...register("date", { required: true })}
             ></input>
           </div>
           <div className="flex mt-6 pb-6 gap-2">
             <p className="font-bold">Customer:</p>
             <input
-              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+              className="border rounded-none border-gray-500 input input-bordered input-sm w-28 max-w-x"
               list="data"
               onChange={(e) => setVal(e.target.value)}
               placeholder="Search"
@@ -68,7 +69,7 @@ const Sells = () => {
               <p className="font-bold">Item</p>
               <input
                 type="Text"
-                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-28 max-w-x"
                 {...register("item", { required: true })}
               ></input>
             </div>
@@ -76,15 +77,23 @@ const Sells = () => {
               <p className="font-bold">Size</p>
               <input
                 type="Text"
-                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-28 max-w-x"
                 {...register("size", { required: true })}
+              ></input>
+            </div>
+            <div>
+              <p className="font-bold">Width</p>
+              <input
+                type="Text"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-28 max-w-x"
+                {...register("width", { required: true })}
               ></input>
             </div>
             <div>
               <p className="font-bold">Height</p>
               <input
                 type="Text"
-                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-28 max-w-x"
                 {...register("height", { required: true })}
               ></input>
             </div>
@@ -92,7 +101,7 @@ const Sells = () => {
               <p className="font-bold">Square Ft</p>
               <input
                 type="Text"
-                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-28 max-w-x"
                 {...register("squareft", { required: true })}
               ></input>
             </div>
@@ -100,7 +109,7 @@ const Sells = () => {
               <p className="font-bold">Quantity</p>
               <input
                 type="Number"
-                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-28 max-w-x"
                 {...register("quantity", { required: true })}
               ></input>
             </div>
@@ -108,7 +117,7 @@ const Sells = () => {
               <p className="font-bold">Total Square</p>
               <input
                 type="Text"
-                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-28 max-w-x"
                 {...register("totalSquare", { required: true })}
               ></input>
             </div>
@@ -116,7 +125,7 @@ const Sells = () => {
               <p className="font-bold">Rate</p>
               <input
                 type="Text"
-                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-28 max-w-x"
                 {...register("rate", { required: true })}
               ></input>
             </div>
@@ -124,7 +133,7 @@ const Sells = () => {
               <p className="font-bold">Price</p>
               <input
                 type="Number"
-                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-28 max-w-x"
                 {...register("price", { required: true })}
               ></input>
             </div>
@@ -153,6 +162,9 @@ const Sells = () => {
                       </th>
                       <th scope="col" class="px-6 py-4">
                         Size
+                      </th>
+                      <th scope="col" class="px-6 py-4">
+                      Width
                       </th>
                       <th scope="col" class="px-6 py-4">
                         Height
@@ -191,6 +203,9 @@ const Sells = () => {
                         </td>
                         <td className="whitespace-nowrap px-6 py-4 font-medium">
                           {item.size}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          {item.width}
                         </td>
                         <td className="whitespace-nowrap px-6 py-4 font-medium">
                           {item.height}
