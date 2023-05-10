@@ -2,7 +2,7 @@ import React from "react";
 
 const Sells = () => {
   return (
-    <div className="pt-20 pb-20 bg-gradient-to-bl from-indigo-900 via-indigo-400 to-indigo-900">
+    <div className="pt-20 pb-20 ">
       <div className="ml-20 mr-20 mt-20 pt-6 pl-4 pr-4 pb-20 bg-white bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg">
         <div className="flex items-center gap-4 justify-center">
           <div>
