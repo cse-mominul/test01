@@ -1,71 +1,89 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Sells = () => {
+  const [val, setVal] = useState();
+  const data = ["alia", "katrina", "karina"];
   return (
     <div className="pt-20 pb-20 ">
-      <div className="ml-20 mr-20 mt-20 pt-6 pl-4 pr-4 pb-20 bg-white bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg">
-        <div className="flex items-center gap-4 justify-center">
-          <div>
-            <p className="font-bold">Date</p>
+      <div className="ml-20 mr-20 mt-20 pt-6 pl-4 pr-4 pb-20 bg-blue-50 bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg">
+        <div>
+          <div className="flex gap-2">
+            <p className="font-bold">Date: </p>
             <input
               type="date"
-              className='class="p-2 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full'
+              className="border rounded-none ml-9 border-gray-500 input input-bordered input-sm w-32 max-w-x"
             ></input>
           </div>
+          <div className="flex mt-6 pb-6 gap-2">
+            <p className="font-bold">Customer:</p>
+            <input
+              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+              list="data"
+              onChange={(e) => setVal(e.target.value)}
+              placeholder="Search"
+            />
+            <datalist id="data">
+              {data.map((op) => (
+                <option>{op}</option>
+              ))}
+            </datalist>
+          </div>
+        </div>
+        <div className="flex items-center gap-4 justify-center">
           <div>
             <p className="font-bold">Item</p>
             <input
               type="Text"
-              className='class="p-2 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full'
+              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
             ></input>
           </div>
           <div>
             <p className="font-bold">Size</p>
             <input
               type="Text"
-              className='class="p-2 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full'
+              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
             ></input>
           </div>
           <div>
             <p className="font-bold">Height</p>
             <input
               type="Text"
-              className='class="p-2 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full'
+              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
             ></input>
           </div>
           <div>
             <p className="font-bold">Square Ft</p>
             <input
               type="Text"
-              className='class="p-2 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full'
+              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
             ></input>
           </div>
           <div>
             <p className="font-bold">Quantity</p>
             <input
               type="Number"
-              className='class="p-2 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full'
+              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
             ></input>
           </div>
           <div>
             <p className="font-bold">Total Square</p>
             <input
               type="Text"
-              className='class="p-2 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full'
+              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
             ></input>
           </div>
           <div>
             <p className="font-bold">Rate</p>
             <input
               type="Text"
-              className='class="p-2 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full'
+              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
             ></input>
           </div>
           <div>
             <p className="font-bold">Price</p>
             <input
               type="Number"
-              className='class="p-2 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full'
+              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
             ></input>
           </div>
         </div>
@@ -93,25 +111,25 @@ const Sells = () => {
                         Item
                       </th>
                       <th scope="col" class="px-6 py-4">
-                      Size
+                        Size
                       </th>
                       <th scope="col" class="px-6 py-4">
-                      Square Ft
+                        Square Ft
                       </th>
                       <th scope="col" class="px-6 py-4">
-                      Quantity
+                        Quantity
                       </th>
                       <th scope="col" class="px-6 py-4">
-                      Total Square
+                        Total Square
                       </th>
                       <th scope="col" class="px-6 py-4">
-                      Rate
+                        Rate
                       </th>
                       <th scope="col" class="px-6 py-4">
-                      Price
+                        Price
                       </th>
                       <th scope="col" class="px-6 py-4">
-                      Action
+                        Action
                       </th>
                     </tr>
                   </thead>
@@ -126,7 +144,6 @@ const Sells = () => {
                       <td class="whitespace-nowrap px-6 py-4">@mdo</td>
                       <td class="whitespace-nowrap px-6 py-4">@mdo</td>
                       <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                      
                     </tr>
                     <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                       <td class="whitespace-nowrap px-6 py-4 font-medium">2</td>
@@ -149,8 +166,6 @@ const Sells = () => {
                       <td class="whitespace-nowrap px-6 py-4">@twitter</td>
                       <td class="whitespace-nowrap px-6 py-4">@twitter</td>
                       <td class="whitespace-nowrap px-6 py-4">@twitter</td>
-                
-                      
                     </tr>
                   </tbody>
                 </table>
