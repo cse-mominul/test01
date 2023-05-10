@@ -4,9 +4,6 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 
 const Sells = () => {
   const [items, setItems] = useState([]);
-  const [displayItem, setDisplayItem] = useState([]);
-
-  console.log("display:", displayItem);
   const {
     register,
     handleSubmit,
@@ -15,7 +12,7 @@ const Sells = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data.customer);
-    setItems([data], setItems);
+    setItems([...items, data]);
 
     resetField("date");
     resetField("item");
@@ -35,7 +32,7 @@ const Sells = () => {
   const deleteItem = (index) => {
     const newItems = [...items];
     newItems.splice(index, 1);
-    setItems(setDisplayItem);
+    setItems(newItems);
   };
   return (
     <div className="pt-20 pb-20 ">
