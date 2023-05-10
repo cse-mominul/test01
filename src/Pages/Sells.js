@@ -1,8 +1,42 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 const Sells = () => {
+  const [items, setItems] = useState([]);
+  const [displayItem, setDisplayItem] = useState([]);
+
+  console.log("display:", displayItem);
+  const {
+    register,
+    handleSubmit,
+    resetField,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data.customer);
+    setItems([data], setItems);
+
+    resetField("date");
+    resetField("item");
+    resetField("size");
+    resetField("height");
+    resetField("squareft");
+    resetField("quantity");
+    resetField("totalSquare");
+    resetField("rate");
+    resetField("price");
+    resetField("customer");
+  };
+
   const [val, setVal] = useState();
   const data = ["alia", "katrina", "karina"];
+
+  const deleteItem = (index) => {
+    const newItems = [...items];
+    newItems.splice(index, 1);
+    setItems(setDisplayItem);
+  };
   return (
     <div className="pt-20 pb-20 ">
       <div className="ml-20 mr-20 mt-20 pt-6 pl-4 pr-4 pb-20 bg-blue-50 bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg">
@@ -12,6 +46,7 @@ const Sells = () => {
             <input
               type="date"
               className="border rounded-none ml-9 border-gray-500 input input-bordered input-sm w-32 max-w-x"
+              {...register("date", { required: true })}
             ></input>
           </div>
           <div className="flex mt-6 pb-6 gap-2">
@@ -21,6 +56,7 @@ const Sells = () => {
               list="data"
               onChange={(e) => setVal(e.target.value)}
               placeholder="Search"
+              {...register("customer", { required: true })}
             />
             <datalist id="data">
               {data.map((op) => (
@@ -29,72 +65,80 @@ const Sells = () => {
             </datalist>
           </div>
         </div>
-        <div className="flex items-center gap-4 justify-center">
-          <div>
-            <p className="font-bold">Item</p>
-            <input
-              type="Text"
-              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
-            ></input>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex items-center gap-4 justify-center">
+            <div>
+              <p className="font-bold">Item</p>
+              <input
+                type="Text"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                {...register("item", { required: true })}
+              ></input>
+            </div>
+            <div>
+              <p className="font-bold">Size</p>
+              <input
+                type="Text"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                {...register("size", { required: true })}
+              ></input>
+            </div>
+            <div>
+              <p className="font-bold">Height</p>
+              <input
+                type="Text"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                {...register("height", { required: true })}
+              ></input>
+            </div>
+            <div>
+              <p className="font-bold">Square Ft</p>
+              <input
+                type="Text"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                {...register("squareft", { required: true })}
+              ></input>
+            </div>
+            <div>
+              <p className="font-bold">Quantity</p>
+              <input
+                type="Number"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                {...register("quantity", { required: true })}
+              ></input>
+            </div>
+            <div>
+              <p className="font-bold">Total Square</p>
+              <input
+                type="Text"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                {...register("totalSquare", { required: true })}
+              ></input>
+            </div>
+            <div>
+              <p className="font-bold">Rate</p>
+              <input
+                type="Text"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                {...register("rate", { required: true })}
+              ></input>
+            </div>
+            <div>
+              <p className="font-bold">Price</p>
+              <input
+                type="Number"
+                className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
+                {...register("price", { required: true })}
+              ></input>
+            </div>
           </div>
-          <div>
-            <p className="font-bold">Size</p>
-            <input
-              type="Text"
-              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
-            ></input>
-          </div>
-          <div>
-            <p className="font-bold">Height</p>
-            <input
-              type="Text"
-              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
-            ></input>
-          </div>
-          <div>
-            <p className="font-bold">Square Ft</p>
-            <input
-              type="Text"
-              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
-            ></input>
-          </div>
-          <div>
-            <p className="font-bold">Quantity</p>
-            <input
-              type="Number"
-              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
-            ></input>
-          </div>
-          <div>
-            <p className="font-bold">Total Square</p>
-            <input
-              type="Text"
-              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
-            ></input>
-          </div>
-          <div>
-            <p className="font-bold">Rate</p>
-            <input
-              type="Text"
-              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
-            ></input>
-          </div>
-          <div>
-            <p className="font-bold">Price</p>
-            <input
-              type="Number"
-              className="border rounded-none border-gray-500 input input-bordered input-sm w-32 max-w-x"
-            ></input>
-          </div>
-        </div>
-        <button
-          type="button"
-          data-te-ripple-init
-          data-te-ripple-color="light"
-          class="inline-block rounded w-full mt-6 bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-        >
-          Save To List
-        </button>
+          <input
+            type="submit"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+            class="inline-block rounded w-full mt-6 bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+          />
+        </form>
         <h3 className="text-2xl mt-6">#Sales</h3>
         {/* Table */}
         <div class="flex flex-col">
@@ -112,6 +156,9 @@ const Sells = () => {
                       </th>
                       <th scope="col" class="px-6 py-4">
                         Size
+                      </th>
+                      <th scope="col" class="px-6 py-4">
+                        Height
                       </th>
                       <th scope="col" class="px-6 py-4">
                         Square Ft
@@ -134,39 +181,45 @@ const Sells = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                      <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                      <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                      <td class="whitespace-nowrap px-6 py-4">Otto</td>
-                      <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                      <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                      <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                      <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                      <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                      <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                    </tr>
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                      <td class="whitespace-nowrap px-6 py-4 font-medium">2</td>
-                      <td class="whitespace-nowrap px-6 py-4">Jacob</td>
-                      <td class="whitespace-nowrap px-6 py-4">Thornton</td>
-                      <td class="whitespace-nowrap px-6 py-4">@fat</td>
-                      <td class="whitespace-nowrap px-6 py-4">@fat</td>
-                      <td class="whitespace-nowrap px-6 py-4">@fat</td>
-                      <td class="whitespace-nowrap px-6 py-4">@fat</td>
-                      <td class="whitespace-nowrap px-6 py-4">@fat</td>
-                      <td class="whitespace-nowrap px-6 py-4">@fat</td>
-                    </tr>
-                    <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                      <td class="whitespace-nowrap px-6 py-4 font-medium">3</td>
-                      <td class="whitespace-nowrap px-6 py-4">Larry</td>
-                      <td class="whitespace-nowrap px-6 py-4">Wild</td>
-                      <td class="whitespace-nowrap px-6 py-4">@twitter</td>
-                      <td class="whitespace-nowrap px-6 py-4">@twitter</td>
-                      <td class="whitespace-nowrap px-6 py-4">@twitter</td>
-                      <td class="whitespace-nowrap px-6 py-4">@twitter</td>
-                      <td class="whitespace-nowrap px-6 py-4">@twitter</td>
-                      <td class="whitespace-nowrap px-6 py-4">@twitter</td>
-                    </tr>
+                    {items.map((item, index) => (
+                      <tr
+                        className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600"
+                        key={index}
+                      >
+                        <td class="whitespace-nowrap px-6 py-4 font-medium">
+                          {index}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          {item.item}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          {item.size}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          {item.height}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          {item.squareft}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          {item.quantity}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          {item.totalSquare}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          {item.rate}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          {item.price}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          <button onClick={() => deleteItem(index)}>
+                            <IoIosCloseCircleOutline className="text-red-500 text-3xl"></IoIosCloseCircleOutline>
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
